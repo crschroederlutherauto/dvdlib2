@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE [dbo].[Delete]
+	@DVDID INT
+AS
+	DELETE FROM [dbo].[DVDs]
+	WHERE @DVDID = DVDID

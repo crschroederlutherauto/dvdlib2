@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE [dbo].[GetByID]
+	@DVDID INT
+AS
+	SELECT * FROM [dbo].[DVDs]
+	WHERE @DVDID = DVDID
