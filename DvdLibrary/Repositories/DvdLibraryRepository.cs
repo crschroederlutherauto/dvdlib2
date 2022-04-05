@@ -5,11 +5,12 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using DvdLibrary.Helpers;
+using DvdLibrary.Interfaces;
 using DvdLibrary.Models;
 
 namespace DvdLibrary.Repository
 {
-    public class DvdLibraryRepository
+    public class DvdLibraryRepository: IDVDRepository
     {
 
         public List<Dvd> GetAll()

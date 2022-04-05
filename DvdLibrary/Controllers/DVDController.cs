@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 using DvdLibrary.Models;
 using DvdLibrary.Repository;
 
 namespace DvdLibrary.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DVDController : Controller
     {
         private DvdLibraryRepository db = new DvdLibraryRepository();
