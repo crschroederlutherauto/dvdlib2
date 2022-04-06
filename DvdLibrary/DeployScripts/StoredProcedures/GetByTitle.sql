@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[GetByTitle]
-	@Title NVARCHAR(MAX)
+	@searchTerm NVARCHAR(MAX)
 AS
 	SELECT * FROM [dbo].[DVDs]
-	WHERE @Title = Title
+	WHERE @searchTerm LIKE Title

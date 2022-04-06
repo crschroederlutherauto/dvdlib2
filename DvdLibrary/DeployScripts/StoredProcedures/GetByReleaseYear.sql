@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[GetByReleaseYear]
-	@ReleaseYear NVARCHAR(MAX)
+	@searchTerm NVARCHAR(MAX)
 AS
 	SELECT * FROM [dbo].[DVDs]
-	WHERE @ReleaseYear = ReleaseYear
+	WHERE @searchTerm LIKE ReleaseYear

@@ -1,6 +1,6 @@
 ﻿USE master
 GO
-IF EXISTS(SELECT * FROM sys.databases WHERE name='DVDLibarary')
+IF EXISTS(SELECT * FROM sys.databases WHERE name='DVDLibrary')
 DROP DATABASE DVDLibrary
 GO
 

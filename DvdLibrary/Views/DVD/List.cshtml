@@ -2,12 +2,17 @@
 
 @{
     ViewBag.Title = "List";
+    List<SelectListItem> searchTerms = new List<SelectListItem>();
+    searchTerms.Add(new SelectListItem() { Text = "Title", Value = "1" });
+    searchTerms.Add(new SelectListItem() { Text = "Release Year", Value = "2" });
+    searchTerms.Add(new SelectListItem() { Text = "Director", Value = "3" });
+    searchTerms.Add(new SelectListItem() { Text = "Rating", Value = "4" });
 }
 
 <h2>List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") @Html.DropDownList("Search Term", searchTerms, new { id = "searchTerm" }) <input type="text" id="searchText" placeholder="Search"/> <button type="button" onclick="Search()">Search</button>
 </p>
 <table class="table">
     <tr>
@@ -23,16 +28,14 @@
         <th>
             @Html.DisplayNameFor(model => model.Rating)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.ActionLink(item.Title, "Details", new { id = item.DvdID })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ReleaseYear)
@@ -43,15 +46,40 @@
         <td>
             @Html.DisplayFor(modelItem => item.Rating)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.DvdID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DvdID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.DvdID })
         </td>
     </tr>
 }
 
 </table>
+<script>
+    function Search(e) {
+        //e.preventDefault();
+        var url = '';
+        var searchText = $('#searchText').val();
+
+        if (!searchText) {
+            return;
+        }
+
+        switch ($('#searchTerm').val()) {
+            case "2":
+                url += '@Url.Action("GetByReleaseYear", "DVD")' + '?searchText=' + searchText;
+                break;
+            case "3":
+                url += '@Url.Action("GetByDirector", "DVD")' + '?searchText=' + searchText;
+                break;
+            case "4":
+                url += '@Url.Action("GetByRating", "DVD")' + '?searchText=' + searchText;
+                break;
+            default:
+                url += '@Url.Action("GetByTitle", "DVD")' + '?searchText=' + searchText;
+                break;
+        }
+
+        window.location = url;
+    }
+</script>

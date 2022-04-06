@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[GetByRating]
-	@Rating NVARCHAR(MAX)
+	@searchText NVARCHAR(MAX)
 AS
 	SELECT * FROM [dbo].[DVDs]
-	WHERE @Rating = Rating
+	WHERE @searchText LIKE Rating

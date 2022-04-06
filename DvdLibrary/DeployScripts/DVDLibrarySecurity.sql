@@ -1,4 +1,4 @@
-﻿CREATE LOGIN DvdLibraryApp WITH PASSWORD='testing123'
+﻿CREATE LOGIN DvdLibraryApp WITH PASSWORD='Testing123!'
 GO
 
 USE DVDLibrary
@@ -9,12 +9,12 @@ GO
 
 GRANT EXECUTE ON [dbo].[Create] TO DVDLibraryApp
 GRANT EXECUTE ON [dbo].[Delete] TO DVDLibraryApp
-GRANT EXECUTE ON [dbo].[DVDList] TO DVDLibraryApp
+GRANT EXECUTE ON [dbo].[GetAll] TO DVDLibraryApp
 GRANT EXECUTE ON [dbo].[GetByDirector] TO DVDLibraryApp
 GRANT EXECUTE ON [dbo].[GetByID] TO DVDLibraryApp
 GRANT EXECUTE ON [dbo].[GetByRating] TO DVDLibraryApp
 GRANT EXECUTE ON [dbo].[GetByReleaseYear] TO DVDLibraryApp
-GRANT EXECUTE ON [dbo].[GeteByTitle] TO DVDLibraryApp
+GRANT EXECUTE ON [dbo].[GetByTitle] TO DVDLibraryApp
 GRANT EXECUTE ON [dbo].[Update] TO DVDLibraryApp
 GO
 

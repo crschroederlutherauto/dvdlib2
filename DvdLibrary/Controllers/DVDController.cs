@@ -4,15 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Http.Cors;
 using System.Web.Mvc;
+using DvdLibrary.Interfaces;
 using DvdLibrary.Models;
-using DvdLibrary.Repository;
+using DvdLibrary.Repositories;
 
 namespace DvdLibrary.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DVDController : Controller
     {
-        private DvdLibraryRepository db = new DvdLibraryRepository();
+        private IDVDRepository db = DVDLibraryRepositoryFactory.CreateDvdRepository();
         
         [HttpGet]
         public ActionResult List()
@@ -27,9 +28,40 @@ namespace DvdLibrary.Controllers
         }
 
         [HttpGet]
+        public ActionResult GetByTitle(string searchText)
+        {
+            return View("List", db.GetByTitle(searchText));
+        }
+
+        [HttpGet]
+        public ActionResult GetByReleaseYear(string searchText)
+        {
+            return View("List", db.GetByReleaseYear(searchText));
+        }
+
+        [HttpGet]
+        public ActionResult GetByDirector(string searchText)
+        {
+            return View("List", db.GetByDirector(searchText));
+        }
+
+        [HttpGet]
+        public ActionResult GetByRating(string searchText)
+        {
+            return View("List", db.GetByRating(searchText));
+        }
+
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             return View(db.GetByID(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Dvd dvd)
+        {
+            db.Update(dvd);
+            return View(db.GetByID(dvd.DvdID));
         }
 
         [HttpGet]

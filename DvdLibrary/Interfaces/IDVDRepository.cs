@@ -14,5 +14,9 @@ namespace DvdLibrary.Interfaces
         void Update(Dvd dvd);
         void Delete(int dvdID);
         int Create(Dvd dvd);
+        List<Dvd> GetByTitle(string searchText);
+        List<Dvd> GetByReleaseYear(string searchText);
+        List<Dvd> GetByDirector(string searchText);
+        List<Dvd> GetByRating(string searchText);
     }
 }
